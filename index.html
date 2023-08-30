@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <style>
+    /* CSS styles for the calculator */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+
+    .calculator {
+      max-width: 300px;
+      margin: 100px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      background-color: #fff;
+    }
+
+    h1 {
+      margin-top: 0;
+      color: #333;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 24px;
+      text-align: right;
+    }
+
+    .btn-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 5px;
+    }
+
+    .btn {
+      background-color: #f2f2f2;
+      border: none;
+      border-radius: 5px;
+      padding: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #ccc;
+    }
+
+    .btn.operator {
+      background-color: #ff9f00;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .btn.operator:hover {
+      background-color: #ffbf40;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h1>Calculator</h1>
+    <input type="text" id="result" readonly>
+    <div class="btn-container">
+      <div class="btn" onclick="appendValue(7)">7</div>
+      <div class="btn" onclick="appendValue(8)">8</div>
+      <div class="btn" onclick="appendValue(9)">9</div>
+      <div class="btn operator" onclick="appendValue('/')">/</div>
+      <div class="btn" onclick="appendValue(4)">4</div>
+      <div class="btn" onclick="appendValue(5)">5</div>
+      <div class="btn" onclick="appendValue(6)">6</div>
+      <div class="btn operator" onclick="appendValue('*')">*</div>
+      <div class="btn" onclick="appendValue(1)">1</div>
+      <div class="btn" onclick="appendValue(2)">2</div>
+      <div class="btn" onclick="appendValue(3)">3</div>
+      <div class="btn operator" onclick="appendValue('-')">-</div>
+      <div class="btn" onclick="appendValue(0)">0</div>
+      <div class="btn" onclick="appendValue('.')">.</div>
+      <div class="btn operator" onclick="clearResult()">C</div>
+      <div class="btn operator" onclick="appendValue('+')">+</div>
+      <div class="btn operator" onclick="calculate()">=</div>
+      <div class="btn" onclick="backspace()">&larr;</div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript functions for calculator functionality
+    function appendValue(value) {
+      document.getElementById("result").value += value;
+    }
+
+    function clearResult() {
+      document.getElementById("result").value = "";
+    }
+
+    function calculate() {
+      var result = eval(document.getElementById("result").value);
+      document.getElementById("result").value = result;
+    }
+
+    function backspace() {
+      var value = document.getElementById("result").value;
+      document.getElementById("result").value = value.slice(0, -1);
+    }
+  </script>
+</body>
+</html>
